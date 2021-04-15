@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'com.gameaccount'
+version '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(14)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:1.7.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
